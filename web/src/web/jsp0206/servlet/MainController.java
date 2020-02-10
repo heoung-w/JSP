@@ -23,7 +23,7 @@ public class MainController extends HttpServlet{
 		// #2. uri 요청에 따른 처리
 		String view = "";
 		if(uri.contentEquals("/web/login.git")) {
-			view = "/jsp0206/loginForm.jsp";
+			view = "/jstl/jsp0206/loginForm.jsp";
 		}else if(uri.equals("/web/loginPro.git")) {
 			String id = request.getParameter("id");
 			String pw = request.getParameter("pw");
@@ -31,7 +31,7 @@ public class MainController extends HttpServlet{
 			//DB 연결 처리
 			int check = 1;
 			request.setAttribute("check", check);
-			view = "/jsp0206/loginPro.jsp";
+			view = "/jstl/jsp0206/loginPro.jsp";
 		}
 		
 		

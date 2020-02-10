@@ -13,7 +13,7 @@ public class LoginController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp0206/loginForm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jstl/jsp0206/loginForm.jsp");
 	
 	
 	}

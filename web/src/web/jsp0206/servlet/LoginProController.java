@@ -23,7 +23,7 @@ public class LoginProController extends HttpServlet{
 		int check = 1;
 		
 		request.setAttribute("check", check);
-		RequestDispatcher rd = request.getRequestDispatcher("/jsp0206/loginPro.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/jstl/jsp0206/loginPro.jsp");
 		rd.forward(request, response);
 	
 	}

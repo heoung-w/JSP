@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class TextController extends HttpServlet{
+public class TestController extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		/*
 		// #1. request 속성 추가
 		request.setAttribute("num", 99);
 		request.setAttribute("id", "java");
@@ -48,13 +48,22 @@ public class TextController extends HttpServlet{
 		vo.setAge(123);
 		vo.setName("파이리");
 		request.setAttribute("vo", vo);
+				
+		request.getRequestDispatcher("/jstl/jsp0207/elTest.jsp").forward(request, response);
+		*/
+		
+		
+		//  jsp0210 파일
+		
+		request.setAttribute("day", new java.util.Date());
+		
+		request.getRequestDispatcher("/jstl/jsp0210/jstl02.jsp").forward(request, response);
 		
 		
 		
 		
 		
 		
-		request.getRequestDispatcher("/jsp0207/elTest.jsp").forward(request, response);
 		
 	}
 
