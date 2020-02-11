@@ -91,7 +91,7 @@
   	</servlet-mapping>
   	-->
   	
-
+	<!--  
   	<servlet>
   		<servlet-name>MVC</servlet-name>
   		<servlet-class>web.TestMember.mvc.MemberTestController</servlet-class>
@@ -105,7 +105,20 @@
   		<servlet-name>MVC</servlet-name>
 		<url-pattern>*.ung</url-pattern>
 	</servlet-mapping>  	
-
+	-->
+	
+	<servlet>
+		<servlet-name>MVC</servlet-name>
+		<servlet-class>web.memberView.controller.MemberController</servlet-class>
+		<init-param>
+			<param-name>propertiesConfig</param-name>
+			<param-value>D:\JSP\JSP\web\WebContent\WEB-INF\properties\member.properties</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MVC</servlet-name>
+		<url-pattern>*.arim</url-pattern>
+	</servlet-mapping>
   	
   	
   	
