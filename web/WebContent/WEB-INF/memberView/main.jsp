@@ -8,8 +8,11 @@
 	<link href="/web/memberViewImg/style.css" rel="stylesheet" type="text/css" >
 
 </head>
+<c:if test="${ check ==0}">
+	<c:redirect url ="member/loginPro.arim"/>
+</c:if>
 
-<c:if test = "${sessionScope.memId == null}">
+<c:if test = "${check == -1 }">
 <body>
 	<br />
 	<h1 align="center"> 메인페이지 </h1>
@@ -31,7 +34,7 @@
 	</div>
 </body>
 </c:if>
-<c:if test="${sessionScope.memId != null}">
+<c:if test="${check == 1}">
 <body>
 	<br />
 	<h1 align="center"> 메인페이지 </h1>
@@ -45,7 +48,7 @@
 	</table>
 	<br /><br /><br /><br />
 	<div align="center">
-		<img src="/memberViewImg/img/beach.jpg" width="700" />
+		<img src="/web/ViewImg/img/beach.jpg" width="700" />
 	</div>
 </body>
 </c:if>

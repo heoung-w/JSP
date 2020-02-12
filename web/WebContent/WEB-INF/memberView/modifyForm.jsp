@@ -1,44 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%@page import="web.jspImgmember.model.MemberDAO"%>
-<%@page import="web.jspImgmember.model.MemberDTO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>회원 정보 수정</title>
-	<link href="style.css" rel="stylesheet" type="text/css" >
+	<link href="/web/memberViewImg/style.css" rel="stylesheet" type="text/css" >
 </head>
-<%
-	if(session.getAttribute("memId") == null) { %>
-		<script>
-			alert("로그인 해주세요!");
-			window.location.href="loginForm.jsp";
-		</script>
-		
-<%	}else{	// 로그인 된 상태
-
-		// 로그인 된 상태에서 실행 == session에 memId 존재
-		// DB에 접속해서 회원의 정보를 모두 긁어와 화면에 뿌려주기
-		// session에 저장된 사용자의 id 꺼내기
-		String id = (String)session.getAttribute("memId");
-	
-		MemberDAO dao = MemberDAO.getInstance();
-		MemberDTO member = dao.getMember(id);
-
-%>
-
+<c:if test="${check==false }">
+	<c:redirect url = "/member/login.arim"/>
+</c:if>
+<c:if test="${check ==true }">
 <body>
 	<br />
 	<h1 align="center">회원 정보 수정</h1>
-	<form action="modifyPro.jsp" method="post" enctype="multipart/form-data">
+	<form action="/web/member/modifyPro.arim" method="post" enctype="multipart/form-data">
 	<table>
 		<tr>
 			<td>아이디 * </td>
-			<td><%=member.getId() %></td>
+			<td>${member.id }</td>
 		</tr>
 		<tr>
 			<td>비밀번호 * </td>
-			<td><input type="password" name="pw" value="<%=member.getPw()%>"/></td>
+			<td><input type="password" name="pw" value="${member.pw}"/></td>
 		</tr>
 		<tr>
 			<td>비밀번호 확인 * </td>
@@ -46,50 +30,51 @@
 		</tr>
 		<tr>
 			<td>이름 * </td>
-			<td><%=member.getName() %></td>
+			<td>${member.name}</td>
 		</tr>
 		<tr>
 			<td>생년월일</td>
 			<td>
-			<%if(member.getBirth()==null){ %>
+			<c:if test="${member.birth ==null }">
 				<input type="text" name="birth" maxlength="8" />
-			<%}else{ %>	
-				<input type="text" name="birth" maxlength="8" value="<%=member.getBirth()%>"/>
-			<%} %>
+			</c:if>
+			<c:if test="${ member.birth !=null}">
+				<input type="text" name="birth" maxlength="8" value="${member.birth}"/>
+			</c:if>
 			</td>
 		</tr>
 		<tr>
 			<td>Email </td>
 			<td>
-			<%if(member.getEmail() == null){ %>
+			<c:if test="${member.email ==null }">
 				<input type="text" name="email" />
-			<%}else{ %>
-				<input type="text" name="email" value="<%=member.getEmail()%>"/>
-			<%} %>
+			</c:if>
+			<c:if test="${member.email != null }">
+				<input type="text" name="email" value="${member.email }"/>
+			</c:if>
 			</td>
 		</tr>
 		<tr>
 			<td>Photo </td>
 			<td>
-				<%if(member.getPhoto() == null){ %>
-					<img src="img/default.png" width="100" /> <br />
-				<%}else{%>
-					<img src="/web/save/<%=member.getPhoto()%>" width="100" /> <br />
-				<%} %>
+				<c:if test="${member.photo ==null }">
+					<img src="/web/ViewImg/img/default.png" width="100" /> <br />
+				</c:if>
+				<c:if test="${member.email !=null }">
+					<img src="/web/save/${member.photo } width="100" /> <br />
+				</c:if>
 				<input type="file" name="photo" />
-				<input type="hidden" name="exPhoto" value="<%=member.getPhoto()%>"/>
+				<input type="hidden" name="exPhoto" value="${member.photo }"/>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
 				<input type="submit" value="수정" />
-				<input type="button" value="취소" onclick="window.location.href='main.jsp'" /> 
+				<input type="button" value="취소" onclick="window.location.href='/web/member/main.arim'" /> 
 			</td>
 		</tr>
 	</table>
 	</form>
 </body>
-
-<%	} %>
-
+</c:if>
 </html>

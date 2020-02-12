@@ -42,7 +42,7 @@
 			}
 			
 			// 팝업 띄워서 아이디만 DB에 존재하는지 확인한후 돌아오게
-			var url = "confirmId.jsp?id="+inputForm.id.value;
+			var url = "/web/member/confirmId.jsp?id="+inputForm.id.value;
 			// 화면의 띄워줄 페이지 이름과 id=값(name속성값이 id인 input 태그에 기입한 값)
 			
 			open(url,"confirm", "toolbar=no, location=no, status=no, menubar=no, scrollbars=no, resizalbe=no, width=300, height=200");
@@ -68,7 +68,7 @@
 		</tr>
 		<tr>
 			<td>아이디 중복검사</td>
-			<td><input type="button" value="중복검사" onclick="confirmIdPopup(this.form)" /></td>
+			<td><input type="button" value="중복검사" onclick="/web/member/confirmIdPopup(this.form)" /></td>
 		</tr>
 		<tr>
 			<td>비밀번호 * </td>
