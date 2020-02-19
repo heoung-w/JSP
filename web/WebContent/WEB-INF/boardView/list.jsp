@@ -62,6 +62,7 @@
 	</table>
 	</c:if>
 	<br />
+	
 	<%-- 목록의 페이지 번호 뷰어 설정 --%>
 	<div align="center">
 	<c:if test="${count > 0}">
